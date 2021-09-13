@@ -2,13 +2,13 @@
   "name": "space-camp-federation-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./index.js",
   "dependencies": {
     "@apollo/federation": "^0.14.1",
-    "@apollo/gateway": "^0.14.1",
-    "apollo-server": "^2.12.0",
+    "@apollo/gateway": "^0.41.0",
+    "apollo-server": "^2.25.2",
     "concurrently": "^5.1.0",
-    "graphql": "^15.0.0",
+    "graphql": "^15.5.0",
     "json-server": "^0.16.1",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.3"
@@ -17,9 +17,9 @@
   "scripts": {
     "server": "concurrently -k npm:server:*",
     "server:rest": "json-server -q db.json",
-    "server:astronauts": "nodemon astronauts.js",
-    "server:mission": "nodemon missions.js",
-    "server:graphql": "nodemon index.js"
+    "server:astronauts": "nodemon --preserve-symlinks astronauts.js",
+    "server:mission": "nodemon --preserve-symlinks missions.js",
+    "server:graphql": "nodemon --preserve-symlinks --inspect-brk=9221 ./index.js"
   },
   "keywords": [],
   "author": "",

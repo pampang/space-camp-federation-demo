@@ -1,0 +1,44 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-node",
+      "request": "attach",
+      "port": 9221,
+      "name": "debug gateway",
+      "sourceMaps": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/index.js"
+    },
+    {
+      "type": "pwa-node",
+      "request": "attach",
+      "port": 9222,
+      "name": "debug astronauts",
+      "sourceMaps": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+    },
+    {
+      "type": "pwa-node",
+      "name": "launch gateway debugger",
+      "request": "launch",
+      "program": "${workspaceFolder}/index.js",
+      // By default, only source maps in your outFiles will be resolved
+      "outFiles": [
+        "${workspaceFolder}/**/*.js",
+        // "${workspaceFolder}/../federation/**"
+        "**/node_modules/@apollo/**"
+      ],
+      // 限制路径为 node_modules。但这个并不能解决 sourceMap 的问题
+      // 或许是因为对 node_modeules 的文件，vscode 都不做 sourcemap 的处理。被排除在 outFiles 之外
+      "runtimeArgs": ["--preserve-symlinks"]
+    }
+  ]
+}
